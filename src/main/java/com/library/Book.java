@@ -6,15 +6,28 @@
 
 package com.library;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author Maga Kh
  */
-public class Book {
-    public String name;
-    public String author;
-    public String publisher;
 
+@XmlRootElement(name = "Book")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Book {
+
+    public String name;
+
+    public String author;
+
+    public String publisher;
+    
+    public Book(){}
+    
     public Book(String name, String author, String publisher) {
         this.name = name;
         this.author = author;

@@ -18,7 +18,7 @@
 	<div class="row">
 
             <div class="col-md-6">
-                <form action="searchStudent" method="POST">
+                <form action="searchresult" method="POST">
                         <div class="form-group">
                            <input class="form-control col-md-6" type="text" name="name" placeholder="student name" required/>
                            

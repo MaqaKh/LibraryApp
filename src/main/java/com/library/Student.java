@@ -1,21 +1,33 @@
 package com.library;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement(name = "Student")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Student {
+
     public String name;
+
     public String surname;
+
     public String birth_date;
 
     
     
-    
-//    ctrl+space basiriq 
+    public Student(){}
+
     public Student(String name, String surname, String birth_date) {
         this.name = name;
         this.surname = surname;
         this.birth_date = birth_date;
     }
 
-    //alt+insert basiriq
+
+
     public String getName() {
         return name;
     }

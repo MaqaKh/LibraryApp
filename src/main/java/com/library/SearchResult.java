@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Maga Kh
  */
-@WebServlet(name = "searchStudent", urlPatterns = {"/searchStudent"})
-public class searchStudent extends HttpServlet {
+@WebServlet(name = "SearchResult", urlPatterns = {"/searchresult"})
+public class SearchResult extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,51 @@ public class searchStudent extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
+        
+        try (PrintWriter out = response.getWriter()) {
+//before             
+//if(request.getParameter("name")!=null && request.getParameter("simpleSearch")!=null ){
 
+            if(request.getParameter("simpleSearch")!=null ){
+                
+                List<Student> list=new DB().students(request.getParameter("name"));
+                for(Student s:list){
+                    out.println(s.name+" - "+s.surname+" - "+s.birth_date);
+                }
+                
+            
+            }else if(request.getParameter("advancedStSearch") != null && request.getParameter("age")!=null){
+  
+
+                    int age=Integer.parseInt(request.getParameter("age"));
+
+                    List<Student> list=new DB().students(request.getParameter("name"),request.getParameter("surname"),age);
+                    
+                    if(list.size()==0){
+                        out.print("no element found");
+                    }else{
+                        for(Student s:list){
+                            out.println(s.name+" - "+s.surname+" - "+s.birth_date);
+                        }
+                    }
+                    
+                
+                
+                
+            }else if(request.getParameter("advancedBookSearch") != null){
+                
+                List<Book> list=new DB().books(request.getParameter("name"), request.getParameter("author"), request.getParameter("publisher"));
+               
+                for(Book b: list){
+                    out.println(b.name+" - "+b.author+" - "+b.publisher);
+                }
+                
+            }else{
+               request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

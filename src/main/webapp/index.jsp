@@ -19,7 +19,7 @@
 	<div class="row">
 
 	<div class="col-md-6">
-            <form action="searchStudent" method="POST">
+            <form action="searchresult" method="POST">
                     <div class="form-group">
                        <input class="form-control col-md-6" type="text" name="name" placeholder="Search stuent" required/>
                        <button  class="form-control btn btn-success col-md-3" name="simpleSearch"> Search </button>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="col-md-6">
-            <form action="searchBook" method="POST">
+            <form action="searchresult" method="POST">
                 <div class="form-group">
                     <input class="form-control col-md-6" type="text" name="name" placeholder="Search book" />
                     <button  class="form-control btn btn-success col-md-3" > Search </button>

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class DB {
 
     public Connection conn;
@@ -38,6 +39,7 @@ public class DB {
     }
 
     //if only name is given
+
     public List<Student> students(String name) {
         try {
             List<Student> list = new ArrayList<>();
