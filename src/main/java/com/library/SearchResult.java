@@ -37,42 +37,70 @@ public class SearchResult extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
-//before             
-//if(request.getParameter("name")!=null && request.getParameter("simpleSearch")!=null ){
 
             if(request.getParameter("simpleSearch")!=null ){
                 
                 List<Student> list=new DB().students(request.getParameter("name"));
-                for(Student s:list){
-                    out.println(s.name+" - "+s.surname+" - "+s.birth_date);
+                if(list.size()>0){
+                    for(Student s:list){
+                        out.println(s.name+" - "+s.surname+" - "+s.birth_date);
+                    }
+                }else{
+                    out.println("no element found");
                 }
                 
             
-            }else if(request.getParameter("advancedStSearch") != null && request.getParameter("age")!=null){
-  
+            }else if(request.getParameter("advancedStSearch") != null ){
 
-                    int age=Integer.parseInt(request.getParameter("age"));
+                //Recheck
+                if(request.getParameter("age").length()==0){
+                        List<Student> list=new DB().students(request.getParameter("name"),request.getParameter("surname"));
 
-                    List<Student> list=new DB().students(request.getParameter("name"),request.getParameter("surname"),age);
-                    
-                    if(list.size()==0){
-                        out.print("no element found");
-                    }else{
+                    if(list.size()>0){
                         for(Student s:list){
                             out.println(s.name+" - "+s.surname+" - "+s.birth_date);
                         }
+
+                    }else{
+                        out.print("no element found");
                     }
-                    
+                }else if( request.getParameter("age")!=null && request.getParameter("age").length()>0){
+
+                    int age=Integer.parseInt(request.getParameter("age"));
+                    List<Student> list=new DB().students(request.getParameter("name"),request.getParameter("surname"),age);
+
+                    if(list.size()>0){
+                         for(Student s:list){
+                            out.println(s.name+" - "+s.surname+" - "+s.birth_date);
+                        }
+
+                    }else{
+                       out.print("no element found");
+                    }
+                }else{
+                    out.println("Error: Age should be a number");
+                }
+                        
                 
+            }else if(request.getParameter("simpleBookSearch")!=null){
                 
+                List<Book> list=new DB().books(request.getParameter("name"));
+                if(list.size()>0){
+                    for(Book b: list){
+                        out.println(b.name+" - "+b.author+" - "+b.publisher);
+                    }
+                }else{out.println("No element found");}
                 
             }else if(request.getParameter("advancedBookSearch") != null){
                 
                 List<Book> list=new DB().books(request.getParameter("name"), request.getParameter("author"), request.getParameter("publisher"));
-               
-                for(Book b: list){
-                    out.println(b.name+" - "+b.author+" - "+b.publisher);
-                }
+               if(list.size()>0){
+                    for(Book b: list){
+                        out.println("Name: '"+b.name+"' | Author: '"+b.author+"' | Publisher:'"+b.publisher+"'"+"<br>"+"Borrowed by: "+b.studentNameAssociated+" "+b.studentSurnameAssociated);
+                    }
+               }else{
+                   out.println("no element found");
+               }
                 
             }else{
                request.getRequestDispatcher("index.jsp").forward(request, response);

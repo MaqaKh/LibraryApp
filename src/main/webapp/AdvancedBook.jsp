@@ -10,18 +10,23 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Advanced book search</title>
+        <style>
+            .st{
+                margin-top: 5%;
+            }
+        </style>
     </head>
     <body>
     <div class="container-fluid">
 	<div class="row">
 
             <div class="col-md-6">
-                <form action="searchresult" method="POST">
+                <form action="searchresult" method="POST" class="st">
                         <div class="form-group">
-                           <input class="form-control col-md-6" type="text" name="name" placeholder="book name" required/>
-                           <input class="form-control col-md-6" type="text" name="author" placeholder="author name" />
-                           <input class="form-control col-md-6" type="text" name="publisher" placeholder="publisher name" />
+                           Name:<input class="form-control col-md-6" type="text" name="name" placeholder="book name" required/>
+                           Author:<input class="form-control col-md-6" type="text" name="author" placeholder="author name" />
+                           Publisher:<input class="form-control col-md-6" type="text" name="publisher" placeholder="publisher name" />
                            <button  class="form-control btn btn-success col-md-3" name="advancedBookSearch"> Search </button>
                        </div>
                 </form>

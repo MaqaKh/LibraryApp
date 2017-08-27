@@ -58,6 +58,26 @@ public class DB {
             close();
         }
     }
+    //if age is not given
+        public List<Student> students(String name,String surname) {
+        try {
+            List<Student> list = new ArrayList<>();
+            String sql = "select * from student where name like ? AND surname like ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "%"+name+"%");
+            ps.setString(2, "%"+surname+"%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Student(rs.getString(2),rs.getString(3), rs.getString(4)));
+            };
+            return list;
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+            return null;
+        } finally {
+            close();
+        }
+    }
     //if age is given
         public List<Student> students(String name,String surname,int age) {
         try {
@@ -88,29 +108,6 @@ public class DB {
             close();
         }
     }
-//        //if age is not given
-//       public List<Student> students(String name,String surname) {
-//        try {
-//
-//            
-//            List<Student> list = new ArrayList<>();
-//            String sql = "select * from student where name like ? AND surname like ? )";
-//            ps = conn.prepareStatement(sql);
-//            ps.setString(1, "%"+name+"%");
-//            ps.setString(2, "%"+surname+"%");
-//
-//            rs = ps.executeQuery();
-//            while (rs.next()) {
-//                list.add(new Student(rs.getString(2),rs.getString(3), rs.getString(4)));
-//            };
-//            return list;
-//        } catch (Exception ex) {
-//            System.out.println("Error: " + ex);
-//            return null;
-//        } finally {
-//            close();
-//        }
-//    }
 
     public List<Book> books(String name) {
         try {
@@ -133,14 +130,19 @@ public class DB {
     public List<Book> books(String name,String author,String publisher) {
         try {
             List<Book> list = new ArrayList<>();
-            String sql = "select * from book where name like ? AND author like ? AND publisher like ?";
+            String sql = "SELECT * from book,orders,student"
+                    + " where book.id=orders.book_id "
+                    + " AND student.id=orders.student_id"
+                    + " AND book.name like ?"
+                    + " AND book.author like ?"
+                    + " AND book.publisher like ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, "%"+name+"%");
             ps.setString(2, "%"+author+"%");
             ps.setString(3, "%"+publisher+"%");
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Book(rs.getString(2),rs.getString(3), rs.getString(4)));
+                list.add(new Book(rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(9),rs.getString(10) ));
             };
             return list;
         } catch (Exception ex) {

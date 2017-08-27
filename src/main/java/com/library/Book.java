@@ -21,10 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Book {
 
     public String name;
-
     public String author;
-
     public String publisher;
+
+
+    public String studentNameAssociated;
+    public String studentSurnameAssociated;
+    
+    
     
     public Book(){}
     
@@ -32,6 +36,13 @@ public class Book {
         this.name = name;
         this.author = author;
         this.publisher = publisher;
+    }
+    public Book(String name,String author,String publisher,String studentName,String studentSurname){
+        this.name=name;
+        this.author=author;
+        this.publisher=publisher;
+        this.studentNameAssociated=studentName;
+        this.studentSurnameAssociated=studentSurname;
     }
 
     public String getName() {
@@ -58,4 +69,19 @@ public class Book {
         this.publisher = publisher;
     }
     
+    public String getStudentNameAssociated() {
+        return studentNameAssociated;
+    }
+
+    public void setStudentNameAssociated(String studentNameAssociated) {
+        this.studentNameAssociated = studentNameAssociated;
+    }
+
+    public String getStudentSurnameAssociated() {
+        return studentSurnameAssociated;
+    }
+
+    public void setStudentSurnameAssociated(String studentSurnameAssociated) {
+        this.studentSurnameAssociated = studentSurnameAssociated;
+    }
 }
