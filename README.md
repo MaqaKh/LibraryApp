@@ -22,11 +22,13 @@ we will need to assign name attribute to each of our submit button.
 
 Then we must design our database. In our case we will use mysql. We will have 3 different tables
 
-Student 	  	Book		   Orders
-id			      id		     id
-name		    	name		   student_id
-surname		  	publisher 	book_id
-birth_date
+```
+ Student 	  	Book		   Orders
+ id			      id		     id
+ name		    	name		   student_id
+ surname		  	publisher 	book_id
+ birth_date
+```
 
 Then to connect to our database we will need to add MySQL dependency. 
 Go to dependencies on your project -> right click -> add dependency-> search for mysql_artificat_id_0.1.jar
@@ -36,11 +38,11 @@ Our Student class will hold all the info about students Name, Surname, Birth_dat
 Create Book class following the same instructions.
 Finally, we will need to create DB class which will initialize database connection and will contain all the queries.
 
-First query: get all the rows from db according to the given name of the student.
-Second query: get all the rows from db according to the given name of the book
-Third query: get all the rows from db according to the given name and surname of the student
-Forth query: get all the rows from db according to the given name, surname and age of the student
-Fifth query: get all the rows from db according to the given name, author, publisher of the book
+- First query: get all the rows from db according to the given name of the student.
+- Second query: get all the rows from db according to the given name of the book
+- Third query: get all the rows from db according to the given name and surname of the student
+- Forth query: get all the rows from db according to the given name, surname and age of the student
+- Fifth query: get all the rows from db according to the given name, author, publisher of the book
 
 After completing these steps, we will need to create a servlet class which will display the results.
 To create the servlet class right click on project->new->servlet
@@ -52,11 +54,11 @@ right click-> new-> web service or we can add a java class and put "@WebService"
 In our case we will add a java class to com.business package. 
 This class will have methods that accept the parameters and will return corresponding methods of db instance.
 In our case we will have 5 methods
-getStudent(String name);
-getStudent(String name,String surname);
-getStudent(String name,String surname,int age);
-getBook(String name);
-getBook(String name,String author,String publisher);
+- getStudent(String name);
+- getStudent(String name,String surname);
+- getStudent(String name,String surname,int age);
+- getBook(String name);
+- getBook(String name,String author,String publisher);
 
 Testing phase
 In this phase of our project development we will need to test our app. First we will make some inputs required, so that at least one of the inputs have the value.
@@ -66,8 +68,9 @@ we will print error message to the screen.
 
 
 # Important decisions made during project lifecycle:
-Switching from eclipse to NetBeans.
-Using age instead of birthdate as an input in advanced student search page
+
+- Switching from eclipse to NetBeans.
+- Using age instead of birthdate as an input in advanced student search page
 
 # Additional notes
 Please use browsers "chrome 8.0+", "opera 10.0+", "Firefox 4.0+" to run this app, otherwise you might get errors.
