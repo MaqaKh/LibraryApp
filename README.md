@@ -5,9 +5,9 @@ To use this App, download it to your local machine and use NetBeans.
 Go to File-> Open Project-> /path to your project/
 Import the sql file to your local database. To import use "command line" or any other software. In our case we used "phpmyadmin"
 Then change the line in DB class that is used to connect to database. Write your own "username" , "password", “databasename”
-
-24.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/”databasename”?useEncoding=true&characterEncoding=UTF-8", "username", "password");
-
+```
+conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/”databasename”?useEncoding=true&characterEncoding=UTF-8", "username", "password");
+```
 
 # Building LibraryApp
 
