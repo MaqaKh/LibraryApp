@@ -1,6 +1,6 @@
 # LibraryProject
 Library App is simple project to search student and books by their credentials.
-Running LibraryApp
+# Running LibraryApp
 To use this App, download it to your local machine and use NetBeans.        
 Go to File-> Open Project-> /path to your project/.
 Import the "library.sql" file to your local database. To import use "command line" or any other software. In our case we used "phpmyadmin".
