@@ -38,8 +38,6 @@ public class DB {
         }
     }
 
-    //if only name is given
-
     public List<Student> students(String name) {
         try {
             List<Student> list = new ArrayList<>();
@@ -49,7 +47,7 @@ public class DB {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Student(rs.getString(2),rs.getString(3), rs.getString(4)));
-            };
+            }
             return list;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -58,8 +56,8 @@ public class DB {
             close();
         }
     }
-    //if age is not given
-        public List<Student> students(String name,String surname) {
+    
+    public List<Student> students(String name,String surname) {
         try {
             List<Student> list = new ArrayList<>();
             String sql = "select * from student where name like ? AND surname like ?";
@@ -69,7 +67,7 @@ public class DB {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Student(rs.getString(2),rs.getString(3), rs.getString(4)));
-            };
+            }
             return list;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -78,15 +76,13 @@ public class DB {
             close();
         }
     }
-    //if age is given
-        public List<Student> students(String name,String surname,int age) {
+
+    public List<Student> students(String name,String surname,int age) {
         try {
             LocalDate now=LocalDate.now();
             LocalDate lowerBound=now.minusYears(age+1);
             LocalDate higherBound=now.minusYears(age-1);
-            System.out.println("----------------------------------------");
-            System.out.println(lowerBound);
-            System.out.println(higherBound);
+
             
             List<Student> list = new ArrayList<>();
             String sql = "select * from student where name like ? AND surname like ? AND (birth_date >= ? AND birth_date<= ?)";
@@ -99,7 +95,7 @@ public class DB {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Student(rs.getString(2),rs.getString(3), rs.getString(4)));
-            };
+            }
             return list;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -118,7 +114,7 @@ public class DB {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Book(rs.getString(2),rs.getString(3), rs.getString(4)));
-            };
+            }
             return list;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -143,7 +139,7 @@ public class DB {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Book(rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(9),rs.getString(10) ));
-            };
+            }
             return list;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -151,5 +147,6 @@ public class DB {
         } finally {
             close();
         }
-    }    
+    }
+    
 }
