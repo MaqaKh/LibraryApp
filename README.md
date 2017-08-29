@@ -2,8 +2,8 @@
 Library App is simple project to search student and books by their credentials.
 Running LibraryApp
 To use this App, download it to your local machine and use NetBeans.        
-Go to File-> Open Project-> /path to your project/
-Import the sql file to your local database. To import use "command line" or any other software. In our case we used "phpmyadmin"
+Go to File-> Open Project-> /path to your project/.
+Import the "library.sql" file to your local database. To import use "command line" or any other software. In our case we used "phpmyadmin".
 Then change the line in DB class that is used to connect to database. Write your own "username" , "password", “databasename”
 ```
 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/”databasename”?useEncoding=true&characterEncoding=UTF-8", "username", "password");
@@ -20,7 +20,7 @@ The third page "AdvancedBook.jsp" will accept multiple user inputs to search boo
 Each of this page consist of forms with different inputs. To handle them in our servlet class 
 we will need to assign name attribute to each of our submit button.
 
-Then we must design our database. In our case we will use mysql. We will have 3 different tables
+Then we must design our database. In our case we will use mysql. We will have 3 different tables:
 
 ```
  Student 	  	Book		   Orders
@@ -31,9 +31,9 @@ Then we must design our database. In our case we will use mysql. We will have 3 
 ```
 
 Then to connect to our database we will need to add MySQL dependency. 
-Go to dependencies on your project -> right click -> add dependency-> search for mysql_artificat_id_0.1.jar
+Go to dependencies on your project -> right click -> add dependency-> search for mysql_artificat_id_0.1.jar.
 
-Then we will need to create 3 different java classes. Go to Source Packages->right click->new-> java class->Student
+Then we will need to create 3 different java classes. Go to Source Packages->right click->new-> java class->Student.
 Our Student class will hold all the info about students Name, Surname, Birth_date. You will need to create constructor along with getters and setters.
 Create Book class following the same instructions.
 Finally, we will need to create DB class which will initialize database connection and will contain all the queries.
@@ -45,15 +45,14 @@ Finally, we will need to create DB class which will initialize database connecti
 - Fifth query: get all the rows from db according to the given name, author, publisher of the book
 
 After completing these steps, we will need to create a servlet class which will display the results.
-To create the servlet class right click on project->new->servlet
+To create the servlet class right click on project->new->servlet.
 Our servlet class will handle all the post methods. We will write if statements to check which post method have been called.
 Followingly, it will display the results of our database queries by calling the suitable method of our DB class.
 
-After checking that our application runs properly, we will have to create a web service for this app. To create web service Go to project ->
-right click-> new-> web service or we can add a java class and put "@WebService" annotation right above class declaration.
+After checking that our application runs properly, we will have to create a web service for this app. To create web service Go to project ->right click-> new-> web service or we can add a java class and put "@WebService" annotation right above class declaration.
 In our case we will add a java class to com.business package. 
 This class will have methods that accept the parameters and will return corresponding methods of db instance.
-In our case we will have 5 methods
+In our case we will have 5 methods:
 - getStudent(String name);
 - getStudent(String name,String surname);
 - getStudent(String name,String surname,int age);
@@ -62,8 +61,7 @@ In our case we will have 5 methods
 
 Testing phase
 In this phase of our project development we will need to test our app. First we will make some inputs required, so that at least one of the inputs have the value.
-Then we will test if we get any errors when other inputs left empty. Finally, we will handle the input corresponding to age which must be a number, otherwise 
-we will print error message to the screen.
+Then we will test if we get any errors when other inputs left empty. Finally, we will handle the input corresponding to age which must be a number, otherwise we will print error message to the screen.
 
 
 
